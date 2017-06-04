@@ -1,0 +1,103 @@
+
+
+.qwFilesUploader {
+  position: relative;
+
+  i {
+    font-size: 26px
+  }
+
+  .clickArea {
+    cursor: pointer;
+    background: #e2e2e2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px #0087F7 dashed;
+    border-radius: 4px;
+  }
+
+  .placeholder {
+    cursor: pointer;
+    color: #646c7f;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    margin-top: -18px;
+    font-size: 18px;
+  }
+
+  .fileInput {
+    opacity: 0.1;
+    position: absolute;
+    top: -9px;
+    width: 1px;
+    height: 1px;
+  }
+
+  .dragBox {
+    width: 100%;
+    min-height: 122px;
+  }
+
+  .dragActive {
+    border: 2px #0087F7 solid;
+    background: rgba(15, 23, 22, 0.21);
+  }
+
+
+  .filePreview {
+    position: relative;
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background: #232121;
+    display: inline-block;
+
+    .fileDelete {
+      z-index: 1;
+      position: absolute;
+      right: 4px;
+      top: 1px;
+      cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    .blur {
+      filter:blur(3px);
+    }
+
+    .fileProgress {
+      overflow: hidden;
+      border-radius: 3px;
+      border: 1px #ffffff solid;
+      width: 90%;
+      height: 11px;
+      position: absolute;
+      top: 44px;
+      left: 3px;
+      z-index: 1;
+
+      .progressIndicator {
+        height: 100%;
+        background: linear-gradient(to bottom, #fff, #e2e2e2);
+      }
+    }
+
+    .imagePreview {
+      // filter: blur(1px);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      &:hover {
+        filter: none;
+      }
+    }
+  }
+}

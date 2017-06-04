@@ -1,0 +1,24 @@
+<div class="qwFilesUploader">
+  <form enctype="multipart/form-data" action="" method="post">
+    <input class="fileInput" type="file" name="file" (change)="fileAddedEvent($event)" *ngIf="maxFiles === 1 && inputActive" accept="{{accept}}" />
+    <input class="fileInput" type="file" id="file" name="file[]" (change)="fileAddedEvent($event)" *ngIf="maxFiles > 1 && inputActive" accept="{{accept}}" multiple=""/>
+
+
+    <div class="dragBox">
+      <div class="clickArea" (click)="openFileDialog()" [ngClass]="{'dragActive': dragActive }"></div>
+      <div class="placeholder" *ngIf="!filesRef.length" (click)="openFileDialog()" [innerHTML]="placeholder"></div>
+      <div class="filePreview"
+           *ngFor="let file of filesRef; let i = index">
+        <div class="fileDelete" (click)="remove(i)">X</div>
+
+        <div class="fileProgress" *ngIf="file.sentPercentage < 100">
+          <div class="progressIndicator"
+               [ngStyle]="{'width': file.sentPercentage + '%'}"></div>
+        </div>
+
+        <img class="imagePreview" [src]="file.src" (click)="imageClick(file)" *ngIf="isImage(file) && file.src" [ngClass]="{'blur': file.sentPercentage < 100}"/>
+        <img class="imagePreview" [src]="defaultPlaceholderUrl" (click)="onImageClick(file)" *ngIf="!isImage(file)" [hidden]="file.sentPercentage"/>
+      </div>
+    </div>
+  </form>
+</div>
